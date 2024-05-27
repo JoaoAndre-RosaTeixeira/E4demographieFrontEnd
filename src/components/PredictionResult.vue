@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="prediction-results">
     <h2>Prediction Result</h2>
     <p>Code: {{ result.code }}</p>
     <p>Nom: {{ result.nom }}</p>

@@ -1,25 +1,28 @@
 <template>
-    <div class="progress-bar">
-      <div class="progress" :style="{ width: accuracyWidth }">{{ accuracy }}%</div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'AccuracyProgressBar',
-    props: {
-      accuracy: {
-        type: Number,
-        required: true
-      }
-    },
-    computed: {
-      accuracyWidth() {
-        return `${this.accuracy}%`;
-      }
+  <div class="progress-bar">
+    <div class="progress" :style="{ width: accuracyWidth }">{{ formattedAccuracy }}%</div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AccuracyProgressBar',
+  props: {
+    accuracy: {
+      type: Number,
+      required: true
     }
-  };
-  </script>
+  },
+  computed: {
+    accuracyWidth() {
+      return `${this.accuracy}%`;
+    },
+    formattedAccuracy() {
+      return this.accuracy.toFixed(2); // Formater avec deux chiffres après la virgule
+    }
+  }
+};
+</script>
   
   <style scoped>
   .progress-bar {

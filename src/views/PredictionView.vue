@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="prediction-form">
     <RegionSelector :regions="regions" @region-selected="onSelectRegion" />
     <DepartementSelector v-if="region" :departements="departements" @departement-selected="onSelectDepartement" />
     <CommuneSelector v-if="departement" :communes="communes" @commune-selected="onSelectCommune" />
@@ -9,13 +9,7 @@
     </div>
     <button @click="predict">Predict</button>
     <div v-if="prediction">
-      <p>Code: {{ prediction.code }}</p>
-      <p>Nom: {{ prediction.nom }}</p>
-      <p>Target Year: {{ prediction.target_year }}</p>
-      <p>Accuracy: {{ prediction.accuracy }}</p>
-      <p>Predicted Population: {{ prediction.predicted_population }}</p>
-      <img v-if="prediction.plot_url" :src="getPlotUrl(prediction.plot_url)" alt="Population Plot">
-      <img v-if="prediction.monitoring_url" :src="getPlotUrl(prediction.monitoring_url)" alt="Monitoring Plot">
+      <PredictionResult :result="prediction" />
     </div>
   </div>
 </template>
@@ -25,12 +19,14 @@ import { mapActions, mapGetters } from 'vuex';
 import RegionSelector from '@/components/RegionSelector.vue';
 import DepartementSelector from '@/components/DepartementSelector.vue';
 import CommuneSelector from '@/components/CommuneSelector.vue';
+import PredictionResult from '@/components/PredictionResult.vue';
 
 export default {
   components: {
     RegionSelector,
     DepartementSelector,
     CommuneSelector,
+    PredictionResult,
   },
   data() {
     return {
@@ -92,9 +88,6 @@ export default {
         console.error('Error fetching prediction:', error);
       }
     },
-    getPlotUrl(plotUrl) {
-      return plotUrl;
-    },
   },
   mounted() {
     this.fetchRegions();
@@ -103,5 +96,4 @@ export default {
 </script>
 
 <style scoped>
-/* Ajoutez vos styles ici */
 </style>
