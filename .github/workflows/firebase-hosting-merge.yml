@@ -28,3 +28,5 @@ jobs:
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV_IA_E4_FRONTED }}'
         channelId: live
         projectId: dev-ia-e4-fronted
+      env:
+        FIREBASE_CLI_EXPERIMENTS: webframeworks
