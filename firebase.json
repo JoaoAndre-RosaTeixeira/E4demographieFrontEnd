@@ -1,13 +1,21 @@
 {
   "hosting": {
-    "source": "dist",
+    "site": "dev-ia-e4-fronted",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "frameworksBackend": {
-      "region": "europe-west1"
-    }
+      "buildCommand": "npm run build",
+      "publicDirectory": "dist"
+    },
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
