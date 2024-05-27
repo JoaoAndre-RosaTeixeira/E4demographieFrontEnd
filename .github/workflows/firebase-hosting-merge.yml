@@ -1,3 +1,5 @@
+# .github/workflows/firebase-hosting-merge.yml
+
 name: Deploy to Firebase Hosting on merge
 
 on:
@@ -12,11 +14,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Install Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
 
     - name: Install dependencies
       run: npm ci
