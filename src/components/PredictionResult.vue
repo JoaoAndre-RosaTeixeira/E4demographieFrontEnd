@@ -6,6 +6,12 @@
     <p>Population Prédite: {{ result.predicted_population }}</p>
     <p>Année Cible: {{ result.target_year }}</p>
     <p>Accuracy:</p>
+    <li v-for="(item, index) in result.accuracy" :key="index">
+      <h1>{{index}}</h1>
+      <p>mae : {{ item.mae }}</p>
+      <p>r2 : {{ item.r2 }}</p>
+      <p>rmse : {{ item.rmse }}</p>
+    </li>
     <AccuracyProgressBar :accuracy="result.accuracy" />
     <div v-if="result.plot_url">
       <img :src="result.plot_url" alt="Population Forecast Plot" />
